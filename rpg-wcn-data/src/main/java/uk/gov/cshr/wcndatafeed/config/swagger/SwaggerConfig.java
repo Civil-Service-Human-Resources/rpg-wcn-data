@@ -1,5 +1,6 @@
 package uk.gov.cshr.wcndatafeed.config.swagger;
 
+import java.time.LocalDate;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.ResponseEntity;
@@ -9,8 +10,6 @@ import springfox.documentation.service.Tag;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
-
-import java.time.LocalDate;
 
 /**
  * Configuration to enable and setup Swagger
@@ -22,7 +21,7 @@ public class SwaggerConfig {
     public Docket vacancyApi() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("uk.gov.cshr.vcm.controller"))
+                .apis(RequestHandlerSelectors.basePackage("uk.gov.cshr.wcndatafeed.controller"))
                 .paths(PathSelectors.any())
                 .build()
                 .pathMapping("/")
@@ -31,8 +30,7 @@ public class SwaggerConfig {
                 .genericModelSubstitutes(ResponseEntity.class)
                 .useDefaultResponseMessages(false)
                 .enableUrlTemplating(true)
-                .tags(new Tag("Vacancy Service", "Apis relating to jobs and vacancies"))
-                ;
+                .tags(new Tag("WCN Data Feed Service", "WCN Data Feed Service"));
     }
 }
 
