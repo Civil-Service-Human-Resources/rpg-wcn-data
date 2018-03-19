@@ -1,5 +1,12 @@
+spring:
+  wcndatafeed:
+    oauth:
+      client: csrapiclient
+      secret: csrapiclient
+      user: wcn
+      password: wcn
 server:
-  port: 8080
+  port: 8990
 security:
     oauth2:
         resource:

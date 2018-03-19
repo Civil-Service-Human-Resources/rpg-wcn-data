@@ -1,6 +1,7 @@
 package uk.gov.cshr.wcndatafeed.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -20,13 +21,19 @@ import org.springframework.security.oauth2.provider.token.store.InMemoryTokenSto
 @EnableWebSecurity
 public class OAuth2SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
+    @Value("${spring.wcndatafeed.oauth.user}")
+    private String user;
+
+    @Value("${spring.wcndatafeed.oauth.password}")
+    private String password;
+
     @Autowired
     private ClientDetailsService clientDetailsService;
 
     @Autowired
     public void globalUserDetails(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
-                .withUser("wcn").password("wcn").roles("WCN");
+                .withUser(user).password(password).roles("WCN");
     }
 
     @Override
