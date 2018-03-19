@@ -8,7 +8,7 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Build image
+          name: Build image for Azure
           command: |
             docker build -t ${AZURE_URL}/rpg-wcn-data:${CIRCLE_WORKFLOW_ID} ./rpg-wcn-data/
 
