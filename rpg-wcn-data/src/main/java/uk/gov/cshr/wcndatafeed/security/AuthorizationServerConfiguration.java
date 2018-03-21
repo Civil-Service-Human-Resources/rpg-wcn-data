@@ -2,6 +2,7 @@ package uk.gov.cshr.wcndatafeed.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
@@ -28,15 +29,21 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
     @Qualifier("authenticationManagerBean")
     private AuthenticationManager authenticationManager;
 
+    @Value("${spring.wcndatafeed.oauth.client}")
+    private String clientName;
+
+    @Value("${spring.wcndatafeed.oauth.secret}")
+    private String secret;
+
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
 
         clients.inMemory()
-                .withClient("csrapiclient")
+                .withClient(clientName)
                 .authorizedGrantTypes("password", "authorization_code", "refresh_token", "implicit")
                 .authorities("ROLE_CLIENT", "ROLE_TRUSTED_CLIENT")
                 .scopes("read", "write", "trust")
-                .secret("csrapiclient")
+                .secret(secret)
                 .accessTokenValiditySeconds(1800).
                 refreshTokenValiditySeconds(3600);
     }
