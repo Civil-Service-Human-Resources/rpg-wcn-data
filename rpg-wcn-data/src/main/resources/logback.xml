@@ -21,11 +21,19 @@
 	</appender>
 
 	<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<File>target/logs/logFile.log</File>
+		<File>/var/log/rpg-wcn-data/logFile.log</File>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<FileNamePattern>
+			<!--<FileNamePattern>
 				logFile.%d{yyyy-MM-dd_HH-mm}.log.zip
-			</FileNamePattern>
+			</FileNamePattern>-->
+			<fileNamePattern>logFile.%d{yyyy-MM-dd}.%i.html</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy
+					class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<!-- or whenever the file size reaches 50MB -->
+				<maxFileSize>5MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+			<!-- keep 30 days' worth of history -->
+			<maxHistory>10</maxHistory>
 		</rollingPolicy>
 
 		<layout class="ch.qos.logback.classic.PatternLayout">
@@ -34,6 +42,7 @@
 			</Pattern>
 		</layout>
 	</appender>
+
 
 	<root level="DEBUG">
 		<appender-ref ref="FILE"/>
