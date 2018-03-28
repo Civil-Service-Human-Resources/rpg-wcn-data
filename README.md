@@ -35,5 +35,4 @@ Once the service is running, data can be pushed to the following endpoint
 
 https://rpg-wcn-data.dev.cshr-gov.uk/wcnDataFeed
 
-username: cshr
-password: csHr247^
+By submiting the correct username/password as required.
