@@ -36,8 +36,11 @@ Once the service is running, use the following CURL commands.
 Get an authentication token for the endpoint using the OAuth client key and secret:
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 By submiting the correct username/password as required.
 =======
+=======
+>>>>>>> parent of 97022a5... Update README.md
 ~~~
 curl --user rpgclient:secret \
   -X POST "http://localhost:8990/oauth/token?grant_type=password&username=wcn&password=pass
@@ -50,4 +53,7 @@ This will return an auth token:
 Then call the data endpoint using this token:
 
 `curl --header "Content-type: text/xml" -X POST -d "<xml><stuff></stuff><xml>" http://localhost:8990/wcnDataFeed/?access_token=24fb2cb7-92f0-4b10-923a-5c0e0160e0c6`
+<<<<<<< HEAD
+>>>>>>> parent of 97022a5... Update README.md
+=======
 >>>>>>> parent of 97022a5... Update README.md
