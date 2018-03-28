@@ -37,8 +37,11 @@ Get an authentication token for the endpoint using the OAuth client key and secr
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 By submiting the correct username/password as required.
 =======
+=======
+>>>>>>> parent of 97022a5... Update README.md
 =======
 >>>>>>> parent of 97022a5... Update README.md
 ~~~
@@ -54,6 +57,9 @@ Then call the data endpoint using this token:
 
 `curl --header "Content-type: text/xml" -X POST -d "<xml><stuff></stuff><xml>" http://localhost:8990/wcnDataFeed/?access_token=24fb2cb7-92f0-4b10-923a-5c0e0160e0c6`
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 97022a5... Update README.md
+=======
 >>>>>>> parent of 97022a5... Update README.md
 =======
 >>>>>>> parent of 97022a5... Update README.md
