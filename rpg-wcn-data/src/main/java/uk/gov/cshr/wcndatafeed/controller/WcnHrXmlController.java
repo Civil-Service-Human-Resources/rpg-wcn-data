@@ -12,7 +12,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/wcnDataFeed", consumes = MediaType.TEXT_XML_VALUE)
+@RequestMapping(value = "/wcnDataFeed", consumes = {
+    MediaType.TEXT_XML_VALUE,
+    "text/x-xml-hrxml"
+})
 public class WcnHrXmlController {
 
     private static final Logger log = LoggerFactory.getLogger(WcnHrXmlController.class);
