@@ -31,8 +31,23 @@ docker run -p 8990:8990 \
 
 ## HTTP request
 
-Once the service is running, data can be pushed to the following endpoint
+Once the service is running, use the following CURL commands.
 
-https://rpg-wcn-data.dev.cshr-gov.uk/wcnDataFeed
+Get an authentication token for the endpoint using the OAuth client key and secret:
 
+<<<<<<< HEAD
 By submiting the correct username/password as required.
+=======
+~~~
+curl --user rpgclient:secret \
+  -X POST "http://localhost:8990/oauth/token?grant_type=password&username=wcn&password=pass
+~~~
+
+This will return an auth token:
+
+`{"access_token":"24fb2cb7-92f0-4b10-923a-5c0e0160e0c6","token_type":"bearer","refresh_token":"9c11312c-7922-4e20-8f10-9ce0fac540a4","expires_in":1799,"scope":"read write trust"}`
+
+Then call the data endpoint using this token:
+
+`curl --header "Content-type: text/xml" -X POST -d "<xml><stuff></stuff><xml>" http://localhost:8990/wcnDataFeed/?access_token=24fb2cb7-92f0-4b10-923a-5c0e0160e0c6`
+>>>>>>> parent of 97022a5... Update README.md
